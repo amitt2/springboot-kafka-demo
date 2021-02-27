@@ -22,21 +22,27 @@ docker build -t spring/spring-kafka-demo .
 ## Tail sping boot app logs
 docker logs -f spring-kafka-demo_app_1
 
-## Kafka commands
+## Setps to test
 
 first create topic named users in kafka.
 ```
 > docker-compose exec broker kafka-topics --create --topic users --bootstrap-server broker:29092 --replication-factor 1 --partitions 1
+```
+Then connect to kafka broker and start console consumer to monitor messages on topic
 
+```
 > docker-compose exec broker bash
 
 > kafka-console-consumer --topic users --bootstrap-server broker:9092 
-
+```
+User below command to start console producer if you want to test it
+```
 > kafka-console-producer --topic users --broker-list broker:9092
 ```
-
-## REST API
+User below command to test REST API to post data to kafka topic.
+```
 > curl -X POST -d "message=test" http://localhost:8080/kafka/publish
+```
 
 ## Stop Docker containers
 ```
