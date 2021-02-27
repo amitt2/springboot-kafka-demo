@@ -19,10 +19,10 @@ docker build -t spring/spring-kafka-demo .
 > docker-compose up -d
 ```
 
-## Tail sping boot app logs
+## Tail spring boot app logs
 docker logs -f spring-kafka-demo_app_1
 
-## Setps to test
+## Steps to test
 
 first create topic named users in kafka.
 ```
